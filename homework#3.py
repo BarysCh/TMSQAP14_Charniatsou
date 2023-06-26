@@ -35,8 +35,8 @@ average_age = total / 3
 print(average_age)
 
 #1 Привести к целому типу -1.6, 2.99
-x = round(1.6)
-y = round(2.99)
+x = int(1.6)
+y = int(2.99)
 print(x, y)
 
 #2 Заменить символ “#” на символ “/” в строке 'www.my_site.com#about'
