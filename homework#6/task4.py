@@ -1,23 +1,27 @@
 import pickle
 
-arr = [10,20,30,40]
-arr1 = [5,10,15,20]
 
-with open("binfile_1.bin", "wb") as file:
-    pickle.dump(arr, file)
+def write_into_bin_file(bin_file, num_list):
+    """writes a list into a bin. file"""
+    with open(bin_file, "wb") as f:
+        pickle.dump(num_list, f)
 
-with open("binfile_2.bin", "wb") as file:
-    pickle.dump(arr1, file)
 
-with open("binfile_1.bin", "rb") as file:
-    data = pickle.load(file)
+def load_from_bin_file(bin_file):
+    """loads data from a bin.file"""
+    with open(bin_file, "rb") as f:
+        data = pickle.load(f)
+        return data
 
-with open("binfile_2.bin", "rb") as file:
-    data_1 = pickle.load(file)
 
-with open("binfile_1.bin", "wb") as file:
-    pickle.dump(data_1, file)
+arr1 = [10,20,30,40]
+arr2 = [5,10,15,20]
+file1 = "binfile_1.bin"
+file2 = "binfile_2.bin"
 
-with open("binfile_2.bin", "wb") as file:
-    pickle.dump(data, file)
-
+write_into_bin_file(file1, arr1)
+write_into_bin_file(file2, arr2)
+data1 = load_from_bin_file(file1)
+data2 = load_from_bin_file(file2)
+write_into_bin_file(file1, data2)
+write_into_bin_file(file2, data1)
